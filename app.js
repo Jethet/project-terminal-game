@@ -4,6 +4,7 @@ prompt.start();
 
 let player = "";
 let choice = null;
+let index = null
 
 const grid = [
   [1, 2, 3],

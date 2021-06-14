@@ -48,6 +48,7 @@ function getChoice() {
   });
 }
 
+
 function playGame() {
   createGrid();
   getChoice();
