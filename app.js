@@ -17,48 +17,27 @@ function createGrid() {
   });
 }
 
+
 function setSquare() {
-  if (player === "X") {
-    if (choice === "1" || choice === "2" || choice === "3") {
-      choice = choice - 1;
-      let index = grid[0];
-      index[choice] = "X";
-      createGrid();
-    }
-    if (choice === "4" || choice === "5" || choice === "6") {
-      choice = choice - 4;
-      let index = grid[1];
-      index[choice] = "X";
-      createGrid();
-    }
-    if (choice === "7" || choice === "8" || choice === "9") {
-      choice = choice - 7;
-      let index = grid[2];
-      index[choice] = "X";
-      createGrid();
-    }
-  } else if (player === "O") {
-    if (choice === "1" || choice === "2" || choice === "3") {
-      choice = choice - 1;
-      let index = grid[0];
-      index[choice] = "O";
-      createGrid();
-    }
-    if (choice === "4" || choice === "5" || choice === "6") {
-      choice = choice - 4;
-      let index = grid[1];
-      index[choice] = "O";
-      createGrid();
-    }
-    if (choice === "7" || choice === "8" || choice === "9") {
-      choice = choice - 7;
-      let index = grid[2];
-      index[choice] = "O";
-      createGrid();
-    }
+  if (choice === "1" || choice === "2" || choice === "3") {
+    choice = choice - 1;
+    index = grid[0];
+  } else if (choice === "4" || choice === "5" || choice === "6") {
+    choice = choice - 4;
+    index = grid[1];
+  } else if (choice === "7" || choice === "8" || choice === "9") {
+    choice = choice - 7;
+    index = grid[2];
   }
-  getChoice()
+  if (player === "X") {
+    index[choice] = "X";
+  } else if (player === "O") {
+    index[choice] = "O";
+  }
+  createGrid();
+  getChoice();
 }
+
 
 function getChoice() {
   prompt.get(["name", "choice"], function (err, result) {
