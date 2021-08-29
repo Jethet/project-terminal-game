@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.table-grid {
+  width: 300px;
+  height: 300px;
+  margin-left: 50px;
+}
+
+.cell {
+  width: 20%;
+  height: 10px;
+  border: 1px solid blue;
+}
