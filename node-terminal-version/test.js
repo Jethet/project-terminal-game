@@ -4,7 +4,13 @@ prompt.start();
 
 let player = "";
 let choice = null;
-let index = null
+let index = null;
+
+function printInstructions() {
+  console.log(
+    "Enter your name as (capital) X or (capital) O.\nYour choice of square can be a number between 1 and 9.\nYou always have to enter a name and choice.\nThe game will end if you do not follow these instructions.\n"
+  );
+}
 
 const grid = [
   [1, 2, 3],
@@ -16,6 +22,7 @@ function createGrid() {
   grid.map((item) => {
     console.log(item);
   });
+  getChoice();
 }
 
 function setSquare() {
@@ -29,49 +36,49 @@ function setSquare() {
     choice = choice - 7;
     index = grid[2];
   }
- 
+
   if (player === "X") {
     index[choice] = "X";
   } else if (player === "O") {
     index[choice] = "O";
   }
   createGrid();
-  getChoice()
+  // getChoice();
 }
-
 
 function getChoice() {
   prompt.get(["name", "choice"], function (err, result) {
     player = result.name;
     choice = result.choice;
-    validateChoice()
+    validateChoice();
   });
 }
 
-function playGame() {
-  createGrid();
-  getChoice();
-}
-
-
 function validateChoice() {
-  if (!player) {
-    console.log("You did not enter your player sign: X or O.");
+  if (!player || !choice) {
+    errorAlert();
   }
-  if (!choice){
-    console.log("You did not enter your choice of square.");
-  } 
+  // if (player !== "O" || player !== "X") {
+  //   errorAlert();
+  // }
   if (choice < 1 || choice > 9) {
-    console.log("Please enter a number between 1 and 9.");
-    return
-  // } else if (player !== "X" || player !== "O") {
-  //   console.log("You entered the wrong name.");
-  // } else {
-  //   setSquare()
+    errorAlert();
   }
   setSquare();
-
 }
 
+function errorAlert() {
+  choice = null;
+  console.log(
+    "There is an error. Make sure you enter your player sign: capital X or capital O. The choice of square has to be between 1 and 9. Both name and choice must be entered."
+  );
+  return;
+}
 
-playGame()
+function playGame() {
+  printInstructions();
+  createGrid();
+  // getChoice();
+}
+
+playGame();
